@@ -15,13 +15,13 @@
     },
     "win": {
       "target": "nsis",
-      "icon": "assets/logo.png"
+      "icon": "assets/icon.ico"
     },
     "nsis": {
       "oneClick": true,
-      "installerIcon": "assets/logo.png",
-      "uninstallerIcon": "assets/logo.png",
-      "installerHeaderIcon": "assets/logo.png",
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "installerHeaderIcon": "assets/icon.ico",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true
     }
