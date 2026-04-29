@@ -2,6 +2,7 @@ const { app, BrowserWindow, session } = require('electron');
 const path = require('path');
 
 const SITE_URL = 'https://rodrigoejulianelopes.com';
+const LOGIN_URL = 'https://rodrigoejulianelopes.com/login-v1/';
 
 let mainWindow;
 let splashWindow;
@@ -31,12 +32,11 @@ function createMain() {
         minHeight: 600,
         show: false,
         title: 'Family School',
-        icon: path.join(__dirname, '../assets/logo.png'),
+        icon: path.join(__dirname, '../assets/icon.ico'),
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
             webviewTag: false,
-            // Bloqueia abertura de novas janelas
             nativeWindowOpen: false,
         }
     });
@@ -50,21 +50,19 @@ function createMain() {
 
     // Bloqueia abertura de novas janelas (clique no título do YouTube etc)
     mainWindow.webContents.setWindowOpenHandler(({ url }) => {
-        // Bloqueia qualquer URL externa
         return { action: 'deny' };
     });
 
     // Bloqueia redirecionamentos externos
     mainWindow.webContents.on('will-redirect', (event, url) => {
-        if (!url.startsWith(SITE_URL) && !url.startsWith('https://rodrigoejulianelopes.com')) {
+        if (!url.startsWith(SITE_URL)) {
             event.preventDefault();
         }
     });
 
-    mainWindow.loadURL(SITE_URL);
+    mainWindow.loadURL(LOGIN_URL);
 
     mainWindow.once('ready-to-show', () => {
-        // Fecha splash e abre janela principal
         setTimeout(() => {
             if (splashWindow) {
                 splashWindow.close();
@@ -79,7 +77,6 @@ function createMain() {
         mainWindow = null;
     });
 
-    // Remove menu padrão
     mainWindow.setMenuBarVisibility(false);
 }
 
