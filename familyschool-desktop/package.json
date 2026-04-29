@@ -1,0 +1,41 @@
+{
+  "name": "family-school",
+  "productName": "Family School",
+  "version": "1.0.0",
+  "description": "Plataforma terapêutica Family School",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist-win": "electron-builder --win --x64",
+    "dist-mac": "electron-builder --mac"
+  },
+  "build": {
+    "appId": "com.familyschool.app",
+    "productName": "Family School",
+    "icon": "assets/logo.png",
+    "win": {
+      "target": "nsis",
+      "icon": "assets/logo.png"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/logo.png",
+      "category": "public.app-category.education"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false,
+      "installerIcon": "assets/logo.png",
+      "uninstallerIcon": "assets/logo.png",
+      "installerHeaderIcon": "assets/logo.png",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Family School"
+    }
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.0.0"
+  }
+}
